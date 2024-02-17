@@ -20,7 +20,7 @@ const walkDir = (dir) => {
 
         const importPath = `./components/${path.relative(componentsDir, filePath).replace('/\\/g', '/')}`
         if (ext === '.vue') {
-          componentExports += `export { default as ${baseName} } from '${importPath};'\n`
+          componentExports += `export { default as ${baseName} } from '${importPath}'\n`
         }
       }
     }
