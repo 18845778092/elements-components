@@ -3,6 +3,7 @@ import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import path from 'path'
 import vue from '@vitejs/plugin-vue'
+import AutoImport from 'unplugin-auto-import/vite'
 import pkg from './package.json'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import dts from 'vite-plugin-dts'
@@ -22,6 +23,26 @@ export default defineConfig({
     vueJsx(),
     UnoCSS(),
     dts({ rollupTypes: true }),
+    AutoImport({
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue$/,
+        /\.vue\?vue/, // .vue
+        /\.md$/ // .md
+      ],
+
+      // global imports to register
+      imports: [
+        // presets
+        'vue',
+        // 'vue-router'
+        // VueRouterAutoImports,
+        '@vueuse/core'
+      ],
+      // resolvers: isProd ? [] : [ElementPlusResolver()],
+      resolvers: [],
+      vueTemplate: true
+    }),
     I18n({
       include: [path.resolve(__dirname, './locales/**')],
       // 说明:由于配置了modules/i18n.ts中默认为legacy: false

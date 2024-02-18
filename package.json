@@ -34,6 +34,7 @@
     "element-plus": "^2.5.6",
     "howler": "^2.2.4",
     "sortablejs": "^1.15.2",
+    "unplugin-auto-import": "^0.17.5",
     "vditor": "^3.9.9",
     "video.js": "^8.10.0",
     "vue-echarts": "^6.6.8",
