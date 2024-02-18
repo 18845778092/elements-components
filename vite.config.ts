@@ -1,11 +1,13 @@
 import { fileURLToPath, URL } from 'node:url'
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
+import path from 'path'
 import vue from '@vitejs/plugin-vue'
 import pkg from './package.json'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import dts from 'vite-plugin-dts'
 import UnoCSS from 'unocss/vite'
+import I18n from '@intlify/unplugin-vue-i18n/vite'
 const { name } = pkg
 
 // https://vitejs.dev/config/
@@ -19,7 +21,14 @@ export default defineConfig({
     }),
     vueJsx(),
     UnoCSS(),
-    dts({ rollupTypes: true })
+    dts({ rollupTypes: true }),
+    I18n({
+      include: [path.resolve(__dirname, './locales/**')],
+      // 说明:由于配置了modules/i18n.ts中默认为legacy: false
+      // 所以禁止修改
+      compositionOnly: true,
+      jitCompilation: true
+    })
   ],
   resolve: {
     alias: {

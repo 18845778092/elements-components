@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="tsx">
-import { useRoute } from 'vue-router/auto'
+import { useRoute } from 'vue-router'
 // import gsap from 'gsap'
 
 const ArrowRight = () => <i class="i-ep:arrow-right"></i>

@@ -39,4 +39,5 @@ if (markerIndex !== -1) {
 }
 
 mainFileContent += '\n' + componentExports
+
 fs.writeFileSync(mainFilePath, mainFileContent)
